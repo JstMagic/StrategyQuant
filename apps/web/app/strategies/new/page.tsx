@@ -35,8 +35,8 @@ export default function NewStrategyPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://localhost:3001/strategies/symbols').then(r => r.json()),
-      fetch('http://localhost:3001/strategies/timeframes').then(r => r.json()),
+      fetch('/api/strategies/symbols').then(r => r.json()),
+      fetch('/api/strategies/timeframes').then(r => r.json()),
     ]).then(([symbolsData, timeframesData]) => {
       setSymbols(symbolsData);
       setTimeframes(timeframesData);
@@ -48,7 +48,7 @@ export default function NewStrategyPage() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/strategies/generate', {
+      const response = await fetch('/api/strategies/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -64,8 +64,8 @@ export default function StrategyDetailPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch(`http://localhost:3001/strategies/${strategyId}`).then(r => r.json()),
-      fetch(`http://localhost:3001/strategies/${strategyId}/backtests`).then(r => r.json()),
+      fetch(`/api/strategies/${strategyId}`).then(r => r.json()),
+      fetch(`/api/strategies/${strategyId}/backtests`).then(r => r.json()),
     ]).then(([strategyData, backtestsData]) => {
       setStrategy(strategyData);
       setBacktests(backtestsData);
@@ -76,7 +76,7 @@ export default function StrategyDetailPage() {
   const runBacktest = async () => {
     setBacktesting(true);
     try {
-      const response = await fetch('http://localhost:3001/strategies/backtest', {
+      const response = await fetch('/api/strategies/backtest', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -101,7 +101,7 @@ export default function StrategyDetailPage() {
   const exportStrategy = async (format: 'mq4' | 'mq5') => {
     setExporting(true);
     try {
-      const response = await fetch('http://localhost:3001/strategies/export', {
+      const response = await fetch('/api/strategies/export', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
