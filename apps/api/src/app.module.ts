@@ -6,6 +6,7 @@ import { validateEnv } from './config/env.validation';
 import { AllExceptionsFilter } from './common/all-exceptions.filter';
 import { HealthModule } from './modules/health/health.module';
 import { ItemsModule } from './modules/items/items.module';
+import { StrategiesModule } from './modules/strategies/strategies.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ItemsModule } from './modules/items/items.module';
     ThrottlerModule.forRoot([{ ttl: 60_000, limit: 100 }]),
     HealthModule,
     ItemsModule,
+    StrategiesModule,
   ],
   providers: [
     { provide: APP_GUARD, useClass: ThrottlerGuard },   // global per-IP rate limit

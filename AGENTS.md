@@ -21,4 +21,4 @@ _None recorded yet._
 
 ## Project log
 
-_The agent appends one line per change below (newest first)._
+- 2026-09-29: Implement the approved scope of blueprint v1 for Build a fully web-based MVP. Build the COMPLETE product the blueprint below describes. Its : .gitignore, apps/api/sql/001_trading_platform.sql, apps/api/src/modules/strategies/dto/strategy-config.dto.ts, apps/api/src/modules/strategies/market-data.service.ts, apps/api/src/modules/strategies/strategy-generator.service.ts, apps/api/src/app.module.ts, apps/api/src/modules/strategies/backtest.service.ts, apps/api/src/modules/strategies/export.service.ts
