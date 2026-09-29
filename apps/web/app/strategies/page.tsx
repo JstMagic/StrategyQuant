@@ -16,7 +16,7 @@ export default function StrategiesPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3001/strategies')
+    fetch('/api/strategies')
       .then(res => res.json())
       .then(data => {
         setStrategies(data);
