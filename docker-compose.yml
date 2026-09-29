@@ -1,0 +1,11 @@
+# Local dev: API + Web as separate services (matches production routing via Next rewrites).
+services:
+  api:
+    build: { context: ., dockerfile: apps/api/Dockerfile.dev }
+    command: npm run dev -w apps/api
+    environment: { PORT: "8080", ALLOWED_ORIGINS: "http://localhost:3000" }
+    ports: ["8080:8080"]
+  web:
+    command: npm run dev -w apps/web
+    environment: { PORT: "3000", API_INTERNAL_URL: "http://localhost:8080" }
+    ports: ["3000:3000"]

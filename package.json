@@ -1,0 +1,19 @@
+{
+  "name": "build-a-fully-web-based-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"API_PORT=8080 npm run dev -w apps/api\" \"npm run dev -w apps/web -- -H 0.0.0.0\"",
+    "build": "npm run build -w apps/api && npm run build -w apps/web",
+    "type-check": "npm run type-check -w apps/api && npm run type-check -w apps/web",
+    "test": "npm test -w apps/api && npm test -w apps/web",
+    "verify": "npm install --no-audit --no-fund --include=dev --loglevel=error --ignore-scripts && npm run type-check && npm test && NEXT_TELEMETRY_DISABLED=1 npm run build && node scripts/smoke.mjs",
+    "start": "node scripts/start.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
